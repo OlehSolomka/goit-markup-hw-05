@@ -16,6 +16,7 @@
   --sotial-link-bg-footer: rgba(255, 255, 255, 0.1);
   --gradient: rgba(47, 48, 58, 0.4);
   --bg-hover-color: rgba(33, 150, 243, 0.9);
+  --task-bg-overlay: rgba(47, 48, 58, 0.8);
 }
 
 body {
@@ -162,7 +163,8 @@ p {
   opacity: 0;
 }
 
-.pseudo:hover::after {
+.pseudo:hover::after,
+.pseudo:focus::after {
   opacity: 1;
 }
 
@@ -258,6 +260,8 @@ p {
   letter-spacing: 0.03em;
 }
 
+/* TASK SECTION */
+
 .task .list {
   display: flex;
 }
@@ -267,6 +271,34 @@ p {
 .task img {
   display: block;
 }
+
+/* .thumb:hover .task-overlay-text,
+.thumb:focus .task-overlay-text {
+  transform: translateY(0%);
+} */
+.task-overlay-text {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 70px;
+
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  background-color: var(--task-bg-overlay);
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+
+  /* transform: translateY(100%);
+  transition: transform 250ms ease; */
+}
+/* TEAM SECTION */
 .team {
   background-color: var(--secondary-background-color);
 }
@@ -423,7 +455,8 @@ p {
   line-height: 1.9;
   letter-spacing: 0.03em;
 }
-.thumb-link:hover .overlay-text {
+.thumb-link:hover .overlay-text,
+.thumb-link:focus .overlay-text {
   transform: translateY(0);
 }
 .thumb {
