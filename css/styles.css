@@ -17,6 +17,8 @@
   --gradient: rgba(47, 48, 58, 0.4);
   --bg-hover-color: rgba(33, 150, 243, 0.9);
   --task-bg-overlay: rgba(47, 48, 58, 0.8);
+  --modal-bgc: rgba(0, 0, 0, 0.2);
+  --timefunction: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -113,6 +115,8 @@ p {
   font-size: 14px;
   line-height: 1.1;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timefunction);
 }
 .nav-list .active {
   color: var(--accent-color);
@@ -142,6 +146,8 @@ p {
   font-size: 14px;
   line-height: 1.1;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timefunction);
 }
 
 .active {
@@ -160,12 +166,71 @@ p {
   bottom: 0%;
   right: -50%;
   transform: translateX(-50%);
-  opacity: 0;
+  opacity: 1;
 }
 
-.pseudo:hover::after,
+/* .pseudo:hover::after,
 .pseudo:focus::after {
   opacity: 1;
+} */
+
+/* MODAL */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--modal-bgc);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+
+  background-color: #fff;
+}
+
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  background-color: #fff;
+}
+.modal-button:hover .icon-button,
+.modal-button:focus .icon-button {
+  fill: var(--accent-color);
+}
+
+.icon-button {
+  width: 11px;
+  height: 11px;
+
+  transition: fill 250ms var(--timefunction);
 }
 
 /* MAIN */
@@ -395,7 +460,11 @@ p {
   padding: 6px 22px;
 
   cursor: pointer;
+
+  transition: background-color 250ms var(--timefunction),
+    color 250ms var(--timefunction), box-shadow 250ms var(--timefunction);
 }
+
 .button-list > li:not(:last-child) {
   margin-right: 8px;
 }
@@ -425,6 +494,7 @@ p {
 .portfolio a {
   display: inline-block;
   text-decoration: none;
+  transition: box-shadow 250ms var(--timefunction);
 }
 .portfolio a:hover,
 .portfolio a:focus {
@@ -471,7 +541,7 @@ p {
   height: 100%;
 
   transform: translateY(100%);
-  transition: transform 250ms ease;
+  transition: transform 250ms var(--timefunction);
 
   background-color: var(--bg-hover-color);
 
@@ -524,6 +594,9 @@ p {
   height: 44px;
 
   border-radius: 50%;
+
+  transition: background-color 250ms var(--timefunction),
+    fill 250ms var(--timefunction);
 }
 .sotial-link:hover,
 .sotial-link:focus {
@@ -550,6 +623,9 @@ p {
 
   border: 1px solid #afb1b8;
   border-radius: 4px;
+
+  transition: fill 250ms var(--timefunction),
+    border-color 250ms var(--timefunction);
 }
 
 .client-border:hover,
@@ -598,6 +674,8 @@ p {
 
   background-color: var(--sotial-link-bg-footer);
   border-radius: 50%;
+
+  transition: background-color 250ms var(--timefunction);
 }
 .footer-icons .footer-icons-list-item {
   fill: #fff;
@@ -617,12 +695,16 @@ p {
   width: 16px;
   height: 12px;
   margin-right: 10px;
+
+  transition: fill 250ms var(--timefunction);
 }
 .contact-list .phone-icon {
   fill: var(--text-color-second);
   width: 10px;
   height: 16px;
   margin-right: 10px;
+
+  transition: fill 250ms var(--timefunction);
 }
 
 .list:hover > svg,
